@@ -15,7 +15,10 @@ class DouyuSpider(scrapy.Spider):
 
     def parse(self, response):
         # 获取房间节点列表  json.loads转换为字典格式
-        node_list = json.loads(response.body.decode())['data']
+        # 方法一
+        # node_list = json.loads(response.body.decode())['data']
+        # 方法二
+        node_list = json.loads(response.text)['data']
 
         # 遍历房间节点列表
         for node in node_list:
